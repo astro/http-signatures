@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Color","An enum representing an ANSI color code."]],"struct":[["Paint","A structure encapsulating all of the styling for a given item."]]});

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `AsHttpSignature` trait in crate `http_signatures`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, AsHttpSignature">
+
+    <title>http_signatures::prelude::AsHttpSignature - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc trait">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Trait AsHttpSignature</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.as_http_signature">as_http_signature</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.authorization_header">authorization_header</a><a href="#method.signature_header">signature_header</a></div><a class="sidebar-title" href="#foreign-impls">Implementations on Foreign Types</a><div class="sidebar-links"><a href="#impl-AsHttpSignature%3CT%3E">HyperRequest</a><a href="#impl-AsHttpSignature%3CT%3E">ReqwestRequest</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>http_signatures</a>::<wbr><a href='index.html'>prelude</a></p><script>window.sidebarCurrent = {name: 'AsHttpSignature', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>http_signatures</a>::<wbr><a href='index.html'>prelude</a>::<wbr><a class="trait" href=''>AsHttpSignature</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/http_signatures/prelude.rs.html#28-61' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait AsHttpSignature&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Read.html" title="trait std::io::Read">Read</a>,&nbsp;</span>{
+    fn <a href='#tymethod.as_http_signature' class='fnname'>as_http_signature</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../http_signatures/struct.HttpSignature.html" title="struct http_signatures::HttpSignature">HttpSignature</a>&lt;T&gt;, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt;;
+
+    fn <a href='#method.authorization_header' class='fnname'>authorization_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt; { ... }
+<div class='item-spacer'></div>    fn <a href='#method.signature_header' class='fnname'>signature_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt; { ... }
+}</pre><div class='docblock'><p><code>AsHttpSignature</code> defines a trait for getting an Authorization or Signature Header string from
+any type that implements it. It provides three methods: <code>as_http_signature</code>, which implementors
+must define, and <code>authorization_header</code> and <code>signature_header</code>, which use <code>as_http_signature</code>
+to create the header string.</p>
+</div>
+            <h2 id='required-methods' class='small-section-header'>
+              Required Methods<a href='#required-methods' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='tymethod.as_http_signature' class='method'><span id='as_http_signature.v' class='invisible'><code>fn <a href='#tymethod.as_http_signature' class='fnname'>as_http_signature</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../http_signatures/struct.HttpSignature.html" title="struct http_signatures::HttpSignature">HttpSignature</a>&lt;T&gt;, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt;</code></span></h3><div class='docblock'><p>Gets an <code>HttpSignature</code> struct from an immutably borrowed Self</p>
+</div></div>
+            <h2 id='provided-methods' class='small-section-header'>
+              Provided Methods<a href='#provided-methods' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='method.authorization_header' class='method'><span id='authorization_header.v' class='invisible'><code>fn <a href='#method.authorization_header' class='fnname'>authorization_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt;</code></span></h3><div class='docblock'><p>Generates the Authorization Header from an immutably borrowed Self</p>
+</div><h3 id='method.signature_header' class='method'><span id='signature_header.v' class='invisible'><code>fn <a href='#method.signature_header' class='fnname'>signature_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt;</code></span></h3><div class='docblock'><p>Generates the Signature Header from an immutably borrowed Self</p>
+</div></div>
+                <h2 id='foreign-impls' class='small-section-header'>
+                  Implementations on Foreign Types<a href='#foreign-impls' class='anchor'></a>
+                </h2>
+            <h3 id='impl-AsHttpSignature%3CT%3E' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../http_signatures/prelude/trait.AsHttpSignature.html" title="trait http_signatures::prelude::AsHttpSignature">AsHttpSignature</a>&lt;T&gt; for <a class="struct" href="../../hyper/proto/request/struct.Request.html" title="struct hyper::proto::request::Request">HyperRequest</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Read.html" title="trait std::io::Read">Read</a>,&nbsp;</span></code><a href='#impl-AsHttpSignature%3CT%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/use_hyper_client.rs.html#105-146' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>An implementation of <code>AsHttpSignature</code> for <code>hyper::Request</code>.</p>
+
+<p>This trait is not often used directly, but is required by the <code>WithHttpSignature</code> trait defined
+below.</p>
+</div><span class='docblock autohide'><div class='impl-items'><h4 id='method.as_http_signature' class="method"><span id='as_http_signature.v-1' class='invisible'><code>fn <a href='#method.as_http_signature' class='fnname'>as_http_signature</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../http_signatures/struct.HttpSignature.html" title="struct http_signatures::HttpSignature">HttpSignature</a>&lt;T&gt;, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/use_hyper_client.rs.html#109-145' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.authorization_header-1' class="method"><span id='authorization_header.v-1' class='invisible'><code>fn <a href='../../http_signatures/prelude/trait.AsHttpSignature.html#method.authorization_header' class='fnname'>authorization_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/prelude.rs.html#41-49' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.signature_header-1' class="method"><span id='signature_header.v-1' class='invisible'><code>fn <a href='../../http_signatures/prelude/trait.AsHttpSignature.html#method.signature_header' class='fnname'>signature_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/prelude.rs.html#52-60' title='goto source code'>[src]</a></span></h4>
+</div></span><h3 id='impl-AsHttpSignature%3CT%3E-1' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../http_signatures/prelude/trait.AsHttpSignature.html" title="trait http_signatures::prelude::AsHttpSignature">AsHttpSignature</a>&lt;T&gt; for <a class="struct" href="../../reqwest/request/struct.Request.html" title="struct reqwest::request::Request">ReqwestRequest</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Read.html" title="trait std::io::Read">Read</a>,&nbsp;</span></code><a href='#impl-AsHttpSignature%3CT%3E-1' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/use_reqwest.rs.html#64-105' title='goto source code'>[src]</a></span></h3>
+<span class='docblock autohide'><div class='impl-items'><h4 id='method.as_http_signature-1' class="method"><span id='as_http_signature.v-2' class='invisible'><code>fn <a href='#method.as_http_signature' class='fnname'>as_http_signature</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../http_signatures/struct.HttpSignature.html" title="struct http_signatures::HttpSignature">HttpSignature</a>&lt;T&gt;, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/use_reqwest.rs.html#68-104' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.authorization_header-2' class="method"><span id='authorization_header.v-2' class='invisible'><code>fn <a href='../../http_signatures/prelude/trait.AsHttpSignature.html#method.authorization_header' class='fnname'>authorization_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/prelude.rs.html#41-49' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.signature_header-2' class="method"><span id='signature_header.v-2' class='invisible'><code>fn <a href='../../http_signatures/prelude/trait.AsHttpSignature.html#method.signature_header' class='fnname'>signature_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;algorithm: <a class="enum" href="../../http_signatures/enum.SignatureAlgorithm.html" title="enum http_signatures::SignatureAlgorithm">SignatureAlgorithm</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="enum" href="../../http_signatures/enum.Error.html" title="enum http_signatures::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/prelude.rs.html#52-60' title='goto source code'>[src]</a></span></h4>
+</div></span>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><div class='out-of-band'><a class='srclink' href='../../src/http_signatures/create.rs.html#170-182' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; AsHttpSignature&lt;T&gt; for <a class="struct" href="../../http_signatures/struct.HttpSignature.html" title="struct http_signatures::HttpSignature">HttpSignature</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Read.html" title="trait std::io::Read">Read</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,&nbsp;</span></code></li>
+</ul><script type="text/javascript" async
+                         src="../../implementors/http_signatures/prelude/trait.AsHttpSignature.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "http_signatures";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

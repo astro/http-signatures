@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `VerifyHeader` trait in crate `http_signatures`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, VerifyHeader">
+
+    <title>http_signatures::prelude::VerifyHeader - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc trait">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Trait VerifyHeader</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.verify_signature_header">verify_signature_header</a><a href="#tymethod.verify_authorization_header">verify_authorization_header</a></div><a class="sidebar-title" href="#foreign-impls">Implementations on Foreign Types</a><div class="sidebar-links"><a href="#impl-VerifyHeader">Request</a><a href="#impl-VerifyHeader">Request&lt;&#39;r&gt;</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>http_signatures</a>::<wbr><a href='index.html'>prelude</a></p><script>window.sidebarCurrent = {name: 'VerifyHeader', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>http_signatures</a>::<wbr><a href='index.html'>prelude</a>::<wbr><a class="trait" href=''>VerifyHeader</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/http_signatures/prelude.rs.html#143-150' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait VerifyHeader {
+    fn <a href='#tymethod.verify_signature_header' class='fnname'>verify_signature_header</a>&lt;G:&nbsp;<a class="trait" href="../../http_signatures/prelude/trait.GetKey.html" title="trait http_signatures::prelude::GetKey">GetKey</a>&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_getter: G<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, VerificationError&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.verify_authorization_header' class='fnname'>verify_authorization_header</a>&lt;G:&nbsp;<a class="trait" href="../../http_signatures/prelude/trait.GetKey.html" title="trait http_signatures::prelude::GetKey">GetKey</a>&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_getter: G<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, VerificationError&gt;;
+}</pre><div class='docblock'><p>The <code>VerifyHeader</code> trait is meant to be implemented for the request types from
+http libraries (such as Hyper and Rocket). This trait makes verifying requests much easier,
+since the <code>verify_authorization_header()</code> and <code>verify_signature_header()</code> methods can be called
+directly on a Request type.</p>
+
+<p>For examples, see the
+<a href="https://github.com/asonix/http-signatures/blob/master/examples/hyper_server.rs">hyper server</a>
+and <a href="https://github.com/asonix/http-signatures/blob/master/examples/rocket.rs">rocket</a> files.</p>
+</div>
+            <h2 id='required-methods' class='small-section-header'>
+              Required Methods<a href='#required-methods' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='tymethod.verify_signature_header' class='method'><span id='verify_signature_header.v' class='invisible'><code>fn <a href='#tymethod.verify_signature_header' class='fnname'>verify_signature_header</a>&lt;G:&nbsp;<a class="trait" href="../../http_signatures/prelude/trait.GetKey.html" title="trait http_signatures::prelude::GetKey">GetKey</a>&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_getter: G<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, VerificationError&gt;</code></span></h3><h3 id='tymethod.verify_authorization_header' class='method'><span id='verify_authorization_header.v' class='invisible'><code>fn <a href='#tymethod.verify_authorization_header' class='fnname'>verify_authorization_header</a>&lt;G:&nbsp;<a class="trait" href="../../http_signatures/prelude/trait.GetKey.html" title="trait http_signatures::prelude::GetKey">GetKey</a>&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_getter: G<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, VerificationError&gt;</code></span></h3></div>
+                <h2 id='foreign-impls' class='small-section-header'>
+                  Implementations on Foreign Types<a href='#foreign-impls' class='anchor'></a>
+                </h2>
+            <h3 id='impl-VerifyHeader' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../http_signatures/prelude/trait.VerifyHeader.html" title="trait http_signatures::prelude::VerifyHeader">VerifyHeader</a> for <a class="struct" href="../../hyper/proto/request/struct.Request.html" title="struct hyper::proto::request::Request">Request</a></code><a href='#impl-VerifyHeader' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/use_hyper_server.rs.html#34-55' title='goto source code'>[src]</a></span></h3>
+<span class='docblock autohide'><div class='impl-items'><h4 id='method.verify_signature_header' class="method"><span id='verify_signature_header.v-1' class='invisible'><code>fn <a href='#method.verify_signature_header' class='fnname'>verify_signature_header</a>&lt;G:&nbsp;<a class="trait" href="../../http_signatures/prelude/trait.GetKey.html" title="trait http_signatures::prelude::GetKey">GetKey</a>&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_getter: G<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, VerificationError&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/use_hyper_server.rs.html#35-43' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.verify_authorization_header' class="method"><span id='verify_authorization_header.v-1' class='invisible'><code>fn <a href='#method.verify_authorization_header' class='fnname'>verify_authorization_header</a>&lt;G:&nbsp;<a class="trait" href="../../http_signatures/prelude/trait.GetKey.html" title="trait http_signatures::prelude::GetKey">GetKey</a>&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_getter: G<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, VerificationError&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/use_hyper_server.rs.html#45-54' title='goto source code'>[src]</a></span></h4>
+</div></span><h3 id='impl-VerifyHeader-1' class='impl'><span class='in-band'><code>impl&lt;'r&gt; <a class="trait" href="../../http_signatures/prelude/trait.VerifyHeader.html" title="trait http_signatures::prelude::VerifyHeader">VerifyHeader</a> for <a class="struct" href="../../rocket/request/request/struct.Request.html" title="struct rocket::request::request::Request">Request</a>&lt;'r&gt;</code><a href='#impl-VerifyHeader-1' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/use_rocket.rs.html#32-43' title='goto source code'>[src]</a></span></h3>
+<span class='docblock autohide'><div class='impl-items'><h4 id='method.verify_signature_header-1' class="method"><span id='verify_signature_header.v-2' class='invisible'><code>fn <a href='#method.verify_signature_header' class='fnname'>verify_signature_header</a>&lt;G:&nbsp;<a class="trait" href="../../http_signatures/prelude/trait.GetKey.html" title="trait http_signatures::prelude::GetKey">GetKey</a>&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_getter: G<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, VerificationError&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/use_rocket.rs.html#33-35' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.verify_authorization_header-1' class="method"><span id='verify_authorization_header.v-2' class='invisible'><code>fn <a href='#method.verify_authorization_header' class='fnname'>verify_authorization_header</a>&lt;G:&nbsp;<a class="trait" href="../../http_signatures/prelude/trait.GetKey.html" title="trait http_signatures::prelude::GetKey">GetKey</a>&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;key_getter: G<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, VerificationError&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/http_signatures/use_rocket.rs.html#37-42' title='goto source code'>[src]</a></span></h4>
+</div></span>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
+        <ul class='item-list' id='implementors-list'>
+    </ul><script type="text/javascript" async
+                         src="../../implementors/http_signatures/prelude/trait.VerifyHeader.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "http_signatures";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

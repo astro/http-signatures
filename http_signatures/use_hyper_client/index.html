@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `use_hyper_client` mod in crate `http_signatures`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, use_hyper_client">
+
+    <title>http_signatures::use_hyper_client - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Module use_hyper_client</p><div class="sidebar-elems"><p class='location'><a href='../index.html'>http_signatures</a></p><script>window.sidebarCurrent = {name: 'use_hyper_client', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>http_signatures</a>::<wbr><a class="mod" href=''>use_hyper_client</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/http_signatures/use_hyper_client.rs.html#16-263' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Available with the <code>use_hyper</code> feature. This modulde defines the <code>AsHttpSignature</code> and
+<code>WithHttpSignature</code> traits for <code>hyper::Request</code>.</p>
+
+<p>This is useful for interacting with HTTP Signatures from Hyper-based applications, since it can
+automatically generate signatures and add them to requests.</p>
+
+<h1 id='example-generating-a-signature' class='section-header'><a href='#example-generating-a-signature'>Example generating a signature</a></h1>
+<p>This example shows getting an <code>HttpSignature</code> type from a <code>hyper::Request</code>. Typically you
+wouldn&#39;t want to do this directly, you&#39;d use <code>with_authorization_header</code> or
+<code>with_signature_header</code> directly, but in the event you want the intermediate state, this is
+available.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="ident">File</span>::<span class="ident">open</span>(<span class="string">&quot;tests/assets/private.der&quot;</span>)<span class="question-mark">?</span>;
+<span class="kw">let</span> <span class="ident">uri</span> <span class="op">=</span> <span class="string">&quot;https://example.com&quot;</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>;
+<span class="kw">let</span> <span class="ident">alg</span> <span class="op">=</span> <span class="ident">SignatureAlgorithm</span>::<span class="ident">RSA</span>(<span class="ident">ShaSize</span>::<span class="ident">TwoFiftySix</span>);
+
+<span class="kw">let</span> <span class="ident">req</span>: <span class="ident">Request</span> <span class="op">=</span> <span class="ident">Request</span>::<span class="ident">new</span>(<span class="ident">Method</span>::<span class="ident">Post</span>, <span class="ident">uri</span>);
+
+<span class="kw">let</span> <span class="ident">http_sig</span> <span class="op">=</span> <span class="ident">req</span>.<span class="ident">as_http_signature</span>(<span class="string">&quot;rsa-key-1&quot;</span>.<span class="ident">into</span>(), <span class="ident">key</span>, <span class="ident">alg</span>)<span class="question-mark">?</span>;</pre>
+
+<h1 id='example-adding-a-signature-to-a-request-type' class='section-header'><a href='#example-adding-a-signature-to-a-request-type'>Example adding a signature to a Request type</a></h1>
+<p>This example adds the HTTP Signature to the request directly as an Authorization header.
+<code>with_signature_header</code> can be used to add the signature as a Signature header instead.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="ident">File</span>::<span class="ident">open</span>(<span class="string">&quot;tests/assets/private.der&quot;</span>)<span class="question-mark">?</span>;
+<span class="kw">let</span> <span class="ident">uri</span> <span class="op">=</span> <span class="string">&quot;https://example.com&quot;</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>;
+<span class="kw">let</span> <span class="ident">alg</span> <span class="op">=</span> <span class="ident">SignatureAlgorithm</span>::<span class="ident">RSA</span>(<span class="ident">ShaSize</span>::<span class="ident">TwoFiftySix</span>);
+
+<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">req</span>: <span class="ident">Request</span> <span class="op">=</span> <span class="ident">Request</span>::<span class="ident">new</span>(<span class="ident">Method</span>::<span class="ident">Post</span>, <span class="ident">uri</span>);
+
+<span class="ident">req</span>.<span class="ident">with_authorization_header</span>(<span class="string">&quot;rsa-key-1&quot;</span>.<span class="ident">into</span>(), <span class="ident">key</span>, <span class="ident">alg</span>)<span class="question-mark">?</span>;</pre>
+
+<p>See
+<a href="https://github.com/asonix/http-signatures/blob/master/examples/hyper_client.rs">this example</a>
+for more information.</p>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "http_signatures";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
